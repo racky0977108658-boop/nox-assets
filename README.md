@@ -42,8 +42,8 @@
 
 ## Repo 結構
 
--  — 可重用的 AI 整合提示詞（Lovable / Cursor 用）
-  -  — Spline 機器人 hero 區塊，已修正 Tailwind keyframes / loader / 重複 Spotlight 等坑
--  — 可直接用的元件代碼
-  -  — three.js 金色粒子 torus knot，游標追蹤 + 自訂 shader，零外部資產依賴
--  — GLB / GLTF 模型檔
+- `prompts/` — 可重用的 AI 整合提示詞（Lovable / Cursor 用）
+  - `spline-hero-integration-prompt.md` — Spline 機器人 hero 區塊，已修正 Tailwind keyframes / loader / 重複 Spotlight 等坑
+- `components/` — 可直接用的元件代碼
+  - `interactive-3d-hero.jsx` — three.js 金色粒子 torus knot，游標追蹤 + 自訂 shader，零外部資產依賴
+- `models/` — GLB / GLTF 模型檔，命名規則見資料夾內說明
