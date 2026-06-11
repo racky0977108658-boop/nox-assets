@@ -47,3 +47,17 @@
 - `components/` — 可直接用的元件代碼
   - `interactive-3d-hero.jsx` — three.js 金色粒子 torus knot，游標追蹤 + 自訂 shader，零外部資產依賴
 - `models/` — GLB / GLTF 模型檔，命名規則見資料夾內說明
+
+## AI 生成 3D 工作流（iPad 可行版）
+
+文字 → 3D 模型 → 網頁互動，全程瀏覽器操作：
+
+1. **生成**（雲端文字生 3D，輸出 GLB）
+   - [Meshy](https://www.meshy.ai) — 文字/圖片生 3D，品質穩定
+   - [Tripo3D](https://www.tripo3d.ai) — 速度快，適合快速迭代
+   - [Luma Genie](https://lumalabs.ai/genie) — 免費額度可先試
+2. **檢查/壓縮** — [gltf.report](https://gltf.report) 瀏覽器直接開，看面數、貼圖大小，套 Draco 壓縮
+3. **入庫** — 存到本 repo `models/`，命名 `來源_名稱_授權.glb`
+4. **行為層** — 丟給 Claude 寫 three.js 載入 + 互動（視線追蹤、動畫混合等）
+
+備註：NVIDIA build.nvidia.com 的 3D Object Generation Blueprint（TRELLIS）品質好但需本地 RTX 4080+ 顯卡，iPad 工作流不適用；其雲端 LLM API 端點留作 AI 自動化案備選。
