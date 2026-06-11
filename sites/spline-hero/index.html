@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Interactive 3D Hero</title>
+<script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; background: #000; overflow: hidden;
+    font-family: 'Helvetica Neue', -apple-system, 'PingFang TC', sans-serif; }
+
+  .card {
+    position: relative; width: 100%; height: 100vh;
+    background: rgba(0,0,0,0.96); overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* Spotlight */
+  .spotlight {
+    position: absolute; pointer-events: none; z-index: 1;
+    height: 169%; width: 138%; opacity: 0;
+    animation: spotlight 2s ease .75s 1 forwards;
+    top: -40%; left: -10%;
+  }
+
+  /* layout */
+  .layout { display: flex; height: 100%; align-items: stretch; }
+  .left {
+    flex: 1; padding: 56px 48px; position: relative; z-index: 10;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .right { flex: 1; position: relative; }
+
+  /* text */
+  .eyebrow {
+    font-size: 11px; letter-spacing: 0.32em; color: rgba(255,255,255,0.5);
+    margin-bottom: 18px; opacity: 0; animation: rise 0.8s ease 0.3s both;
+  }
+  h1 {
+    font-size: clamp(36px, 5vw, 56px); font-weight: 700; line-height: 1.08;
+    background: linear-gradient(180deg, #f5f5f5 0%, #a0a0a0 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    opacity: 0; animation: rise 0.8s ease 0.45s both;
+  }
+  p {
+    margin-top: 20px; max-width: 400px; color: #737373;
+    font-size: 15px; line-height: 1.75;
+    opacity: 0; animation: rise 0.8s ease 0.6s both;
+  }
+
+  /* Spline viewer */
+  spline-viewer { width: 100%; height: 100%; }
+
+  /* loader overlay */
+  .loader {
+    position: absolute; inset: 0; display: flex;
+    align-items: center; justify-content: center;
+    background: transparent; pointer-events: none; z-index: 5;
+    opacity: 1; transition: opacity 0.8s ease;
+  }
+  .loader.hidden { opacity: 0; }
+  .ring {
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.12);
+    border-top-color: rgba(255,255,255,0.6);
+    animation: spin 0.8s linear infinite;
+  }
+
+  /* mobile */
+  @media (max-width: 720px) {
+    .layout { flex-direction: column; }
+    .left { padding: 40px 28px 24px; flex: 0 0 auto; }
+    .right { flex: 1; min-height: 300px; }
+  }
+
+  @keyframes spotlight {
+    0%   { opacity: 0; transform: translate(-72%, -62%) scale(0.5); }
+    100% { opacity: 1; transform: translate(-50%, -40%) scale(1); }
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01s !important; }
+  }
+</style>
+</head>
+<body>
+<div class="card">
+
+  <!-- Spotlight SVG -->
+  <svg class="spotlight" viewBox="0 0 3787 2842" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g filter="url(#f)">
+      <ellipse cx="1924.71" cy="273.501" rx="1924.71" ry="273.501"
+        transform="matrix(-0.822377 -0.568943 -0.568943 0.822377 3631.88 2291.09)"
+        fill="white" fill-opacity="0.21"/>
+    </g>
+    <defs>
+      <filter id="f" x="0.86" y="0.84" width="3785.16" height="2840.26"
+        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+        <feGaussianBlur stdDeviation="151"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <div class="layout">
+    <!-- Left -->
+    <div class="left">
+      <div class="eyebrow">INTERACTIVE · 3D</div>
+      <h1>Interactive 3D</h1>
+      <p>Bring your UI to life with beautiful 3D scenes. Create immersive experiences
+         that capture attention and enhance your design.</p>
+    </div>
+
+    <!-- Right: Spline robot -->
+    <div class="right">
+      <div class="loader" id="loader"><span class="ring"></span></div>
+      <spline-viewer
+        url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+        id="spline">
+      </spline-viewer>
+    </div>
+  </div>
+</div>
+
+<script>
+  const spline = document.getElementById('spline');
+  const loader = document.getElementById('loader');
+  spline.addEventListener('load', () => loader.classList.add('hidden'));
+  setTimeout(() => loader.classList.add('hidden'), 8000); // fallback
+</script>
+</body>
+</html>
