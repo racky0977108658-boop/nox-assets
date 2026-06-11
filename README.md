@@ -39,3 +39,11 @@
 2. **iPad 效能紅線**：單一模型壓縮後 < 5MB，貼圖 ≤ 2048px，上 Draco 壓縮。
 3. **行為層交給 Claude**：視線追蹤、眨眼、idle 動畫混合 — 拿到 GLB 即可寫。
 4. **商用案授權三查**：CC0 直接用；CC-BY 要標註；21st.dev 元件逐個看授權頁。
+
+## Repo 結構
+
+-  — 可重用的 AI 整合提示詞（Lovable / Cursor 用）
+  -  — Spline 機器人 hero 區塊，已修正 Tailwind keyframes / loader / 重複 Spotlight 等坑
+-  — 可直接用的元件代碼
+  -  — three.js 金色粒子 torus knot，游標追蹤 + 自訂 shader，零外部資產依賴
+-  — GLB / GLTF 模型檔
