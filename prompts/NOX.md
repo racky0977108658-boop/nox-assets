@@ -3,7 +3,7 @@
 > **這是什麼**：NOX(恆域藝創)做網頁 / 3D / 接案的全部核心知識,合併成一份。
 > **怎麼用**：新對話起手式說一句 **「調用 NOX」**,Claude 會抓這份 raw URL 讀進 context,等於現場把整個知識庫貼進來。
 > **內容**：設計心法 + WebGL 畫質渲染管線(含程式)+ 接案交付母表 + 報價分級。
-> **配套**：本檔自包含,即現行主知識庫。repo 內目前無獨立 v1 技法包(詳見 Part 7)。
+> **配套**：本檔自包含,即現行主知識庫。repo 內目前無獨立 v1 技法包(詳見 Part 8)。
 
 ---
 
@@ -26,11 +26,12 @@
 ## 目錄（依任務跳對應段）
 
 - **要俐落 / 流暢的 3D** → Part 1 心法 + Part 2 速查 + Part 3 渲染管線
-- **接客戶案 / 報價 / 驗收** → Part 2 速查 + Part 4 交付母表
+- **AI 視覺素材整合(2D→3D)** → Part 4 AI 視覺流程
+- **接客戶案 / 報價 / 驗收** → Part 2 速查 + Part 5 交付母表
 - **查共用原則(DNA / 影片 / iPad)** → Part 1
 - **快速救火(發灰 / 卡頓 / 資產規範)** → Part 2 速查
-- **別抄錯的事實** → Part 5
-- **維護這份檔** → Part 6
+- **別抄錯的事實** → Part 6
+- **維護這份檔** → Part 7
 
 ---
 
@@ -83,7 +84,7 @@ renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
 
 ### 接案必問（漏一個就漏報價）
 多語系?｜要跑廣告 / 追蹤?｜跨國合規(GDPR/CCPA)?｜高併發發表日?｜電商導流?
-→ 任一 yes,翻 Part 4 對應層,當加購模組報價。
+→ 任一 yes,翻 Part 5 對應層,當加購模組報價。
 
 ---
 
@@ -194,7 +195,34 @@ vec3 rim = fresnel * rimColor * rimStrength;   // 加到最終 color
 
 ---
 
-# Part 4 · 接案交付母表（完整六層 + 報價分級）
+# Part 4 · AI 視覺素材整合流程（2D 生成圖 → 3D 管線）
+
+> 定位:AI 生成圖是**配料,不是主角**。主流「Figma → Framer → 2D 影片 hero」那套是**入門款 / 快案用**;NOX 的進階款是「AI 背景板 + 即時 3D + 鏡頭敘事」。同一張素材放進 3D 管線,價值高得多。**別淪為 AI 素材組裝工——那沒有護城河。**
+
+## 4.1 素材來源（優先自產）
+- 優先**自己生**(NOX / Higgsfield 影像工具,Nano Banana Pro 等):on-brand、零授權風險、IP 是自己的。
+- 付費庫(如 sceneai.art)只當**逆向工程參考 / mood board**,不當素材農場。要用付費項目就訂閱,別爬付費牆(違反 ToS / 侵權,接商業案風險高);免費項目先讀 License 確認可否商用。
+
+## 4.2 資產前置優化（與 iPad 紅線同源）
+- 靜態圖 → **WebP**,高解析降採樣
+- Hero 影片 → 剪**無縫 loop**、壓到 ~5MB、MP4 / WebM
+- ⚠️ **iOS Safari 雷**:`loop muted playsinline` 只是基本盤;自動播放影片仍有解碼 / 記憶體成本,5MB loop 在 iPad 上可能 jank。搭 `IntersectionObserver` 離屏暫停(沿用既有 GPU 休眠手法),別讓 hero 影片拖垮行動端。
+
+## 4.3 可讀性與調色
+- **漸層 scrim(保文字可讀)**:AI 圖色彩濃,白字會糊。在「視覺層之上、UI 之下」墊一層透明漸層(例:底部 `rgba(0,0,0,.8)` → 頂部 `0`)。這是 2D chrome 的延伸,但目的是可讀性。
+- **抽色 → CSS 變數**:從圖提主色 + 輔色設成變數,讓按鈕 / 字 / 3D 燈光跟背景氛圍呼應(接 Part 1 色彩 DNA)。
+
+## 4.4 接進 3D 的三種用法
+1. 當 Three.js **貼圖 / matcap / 背景板**,墊在即時 3D 後面
+2. 當**前期 mood / 風格探索**,定調後再進 3D
+3. Hero = **2D AI 背景 + 前景即時 3D 物件 + chrome 疊層**(三明治)
+
+## 4.5 定位提醒（寫給未來的 instance）
+**Framer 不是 NOX 的路;手刻 code(Three.js / GSAP)才是,而且高一階。** 視差(parallax)只是最入門的捲動效果,NOX 的相機旅程(Part 3.4)高好幾階。看到「Figma → Framer → 影片 hero」這類流程,當入門參考就好,別被它帶偏核心定位。
+
+---
+
+# Part 5 · 接案交付母表（完整六層 + 報價分級）
 
 > 用法：**報價時**逐層勾,決定客戶要哪幾層；**驗收時**逐項過,當交付 QA。
 
@@ -258,7 +286,7 @@ SEO    [ ] OG/Card  [ ] 子頁 meta  [ ] sitemap/robots
 
 ---
 
-# Part 5 · 鎖死的事實修正（別再抄錯）
+# Part 6 · 鎖死的事實修正（別再抄錯）
 
 1. 拆鬼武者官網時:它是**經典單體 WordPress + Polylang**,**不是** headless + React/Vue。證據(瀏覽域上的 `pll_language` cookie + 伺服器吐 `<br class="sp">` PHP 主題標記)往相反方向走。別亂推銷「全 headless 重構」。
 2. 它**不是純 SPA**:首頁=長捲動 3D 體驗,about/character/action/location/products 是**真獨立頁**。
@@ -266,17 +294,17 @@ SEO    [ ] OG/Card  [ ] 子頁 meta  [ ] sitemap/robots
 
 ---
 
-# Part 6 · 維護規約（讓 repo 不亂長）
+# Part 7 · 維護規約（讓 repo 不亂長）
 
 - **新共用心法** → Part 1（唯一權威,不散進別處）
 - **新程式 / 管線技法** → Part 3
-- **新接案 / 合規 / 工具** → Part 4 對應層
+- **新接案 / 合規 / 工具** → Part 5 對應層
 - **全新主題(GPU 粒子 / shader 庫等)** → Part 3 開新小節或拆獨立檔,並更新目錄
 - 重大改動在檔尾留變更註記,版本號遞增
 
 ---
 
-# Part 7 · 倉庫現況註記
+# Part 8 · 倉庫現況註記
 
 檢查 `racky0977108658-boop/nox-assets` 後:**並無獨立的「NOX v1」技法包檔案**。
 `prompts/` 內目前只有 `spline-hero-integration-prompt.md`;root `README.md` 是 3D 素材資源清單(mrdoob / brunosimon / Poly Haven / glTF-Transform 等)。
