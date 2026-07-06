@@ -29,6 +29,7 @@
 - **AI 視覺素材整合(2D→3D)** → Part 4 AI 視覺流程
 - **接客戶案 / 報價 / 驗收** → Part 2 速查 + Part 5 交付母表
 - **查共用原則(DNA / 影片 / iPad)** → Part 1
+- **電影級黑洞 / 測地線光追 / Kerr / TAA** → Part 3.6 + 獨立包 `prompts/webgl-blackhole-pipeline.md`
 - **快速救火(發灰 / 卡頓 / 資產規範)** → Part 2 速查
 - **別抄錯的事實** → Part 6
 - **維護這份檔** → Part 7
@@ -193,6 +194,22 @@ vec3 rim = fresnel * rimColor * rimStrength;   // 加到最終 color
 [ ] loop 內無重建幾何  [ ] pixelRatio≤2  [ ] Draco+KTX2  [ ] 離窗暫停 RAF
 ```
 
+## 3.6 電影級黑洞渲染管線(測地線光追 / Kerr / TAA)
+
+> 完整程式與公式在獨立包:**`prompts/webgl-blackhole-pipeline.md`**（同 repo,raw 讀取即可併入 context）。
+> 來源:GARGANTUA → KERR → 相對論墜入 + TAA 實驗(v1–v4 定案)。iPad M4 電影級 60fps 驗證通過。
+
+**核心技術一覽:**
+1. **史瓦西測地線積分**:逐像素施加 `a = -1.5·h²·r̂/r⁴`,光子環 / 背後盤翻折拱橋 / 二次成像自然湧現,免貼圖造假
+2. **Kerr 參考系拖曳**:光子位置+方向逐步繞自轉軸旋轉,得不對稱光子環;`horizonR(a)` / `iscoR(a)` 隨自旋變化
+3. **相對論吸積盤**:都卜勒射束 `I∝D³` + 重力紅移 + 差速旋轉 FBM 旋臂(反向旋轉座標再取雜訊,免手繪)
+4. **相對論墜入相機**:光行差(勞侖茲方向變換)+ 視野都卜勒 + 時間膨脹遙測 `dτ=√(1-rs/r)√(1-β²)dt`
+5. **TAA 無運動向量版**:混合率必須跟「螢幕像素位移」走(角位移/FOV×解析度),否則歷史幀疊出全畫面殘影——**這是實測踩過的坑,務必照此公式,不要用固定低混合率**
+6. **HDR 管線定案順序**:場景→TAA 解算→亮部萃取→雙向高斯 Bloom→銳化補償→ACES→暈影→顆粒
+7. **壓縮感教訓**:視覺扭曲強度是次要的,**背景星場密度才是壓縮感是否可讀的關鍵**——4 層星場 + 星等冪律 + 高頻塵埃層
+
+適用場景不限黑洞:測地線積分技巧可延伸到任何「光線彎曲/透鏡」視覺;TAA 混合率公式與 HDR 後製順序是所有 WebGL 電影級專案的通用配方。
+
 ---
 
 # Part 4 · AI 視覺素材整合流程（2D 生成圖 → 3D 管線）
@@ -307,7 +324,7 @@ SEO    [ ] OG/Card  [ ] 子頁 meta  [ ] sitemap/robots
 # Part 8 · 倉庫現況註記
 
 檢查 `racky0977108658-boop/nox-assets` 後:**並無獨立的「NOX v1」技法包檔案**。
-`prompts/` 內目前只有 `spline-hero-integration-prompt.md`;root `README.md` 是 3D 素材資源清單(mrdoob / brunosimon / Poly Haven / glTF-Transform 等)。
+`prompts/` 內現有 `spline-hero-integration-prompt.md` 與 `webgl-blackhole-pipeline.md`(電影級黑洞測地線光追/Kerr/TAA 獨立技法包);root `README.md` 是 3D 素材資源清單(mrdoob / brunosimon / Poly Haven / glTF-Transform 等)。
 - 因此本檔(`NOX.md`)即現行**主知識庫**,內容自包含,不依賴任何 v1 檔。
 - 若你手上另有「NOX v1」逐字內容(別處 / 本機),貼來即可併進 Part 1/3。
 - 素材資源清單與本檔互補,不重複收錄;需要時一併參考 root `README.md`。
@@ -315,3 +332,5 @@ SEO    [ ] OG/Card  [ ] 子頁 meta  [ ] sitemap/robots
 ---
 
 _單檔主檔 v1 — 觸發語「調用 NOX」。出處:拆解 Capcom《鬼武者 Way of the Sword》官網(體驗層由 NOX 分析,infra/合規層整合自外部分析並修正)。_
+
+**v1.1 變更(2026-07)**:新增 Part 3.6 電影級黑洞渲染管線索引,完整內容拆至獨立包 `prompts/webgl-blackhole-pipeline.md`(史瓦西/Kerr 測地線光追、相對論墜入相機、無運動向量 TAA 正確混合率公式、HDR 管線定案順序)。
