@@ -1,64 +1,61 @@
-# NOX 3D 素材與資源庫清單
-> 更新：2026-06-11 · 基於 GitHub @racky0977108658-boop 的追蹤與星標 + 補充
-> 🧭 **主知識庫入口**：做網頁 / 3D / 接案,先調用 [`prompts/NOX.md`](prompts/NOX.md)(觸發語「調用 NOX」)。本檔是 3D 素材資源清單,與主知識庫互補。
+# NOX Cinematic Web System v2
 
-## 你已追蹤的帳號
+NOX 的 3D／動態網站製作知識庫。目標不是堆疊特效，而是製作一支可由使用者控制進度的高級電影：
 
-| 帳號 | 是誰 | 重點 repo |
-|---|---|---|
-| [mrdoob](https://github.com/mrdoob) | three.js 作者 | `three.js`（已星標）— `/examples/models` 內含大量可直接用的 GLB/GLTF 測試模型 |
-| [brunosimon](https://github.com/brunosimon) | Three.js Journey 課程作者 | `folio-2019`（傳奇 3D 作品集，完整開源）、`my-room-in-3d` — 學 Blender→three.js 工作流的最佳範本 |
-| [21st-dev](https://github.com/21st-dev) | 21st.dev 元件庫 | `magic-mcp`（AI 生成元件的 MCP server）、`cli` — 元件素材來源，注意各元件授權各自獨立 |
+> Scroll 控制時間，Camera 負責敘事，3D 建立空間，DOM 傳達資訊，特效最後才加入。
 
-## GLB / GLTF 模型來源（可直接餵 three.js）
+## 快速入口
 
-| 來源 | 內容 | 授權 |
-|---|---|---|
-| [KhronosGroup/glTF-Sample-Assets](https://github.com/KhronosGroup/glTF-Sample-Assets) | 官方範例模型庫（頭盔、材質球、動畫角色等） | 多為 CC0 / CC-BY，每個模型附授權檔 |
-| [pmndrs market](https://market.pmnd.rs) | 精選 CC0 模型 + 材質，專為 R3F 生態挑選 | CC0 |
-| [Poly Haven](https://polyhaven.com) | HDRI 環境光、材質、模型 — 打光質感的關鍵 | CC0 |
-| [Sketchfab](https://sketchfab.com/search?licenses=322a749bcfa841b29dff1e8a1bb74b0b&type=models) | 海量模型，篩 CC0/CC-BY 下載 GLB | 逐件確認 |
-| [quaternius.com](https://quaternius.com) | 低多邊形角色/場景包，含骨架動畫 | CC0 |
+| 你現在要做什麼 | 先讀 |
+|---|---|
+| 了解完整方法 | [`docs/NOX-CINEMATIC-WEB-SYSTEM-v2.md`](docs/NOX-CINEMATIC-WEB-SYSTEM-v2.md) |
+| 拆參考、定美術 | [`docs/01-art-direction-and-reference.md`](docs/01-art-direction-and-reference.md) |
+| 寫分鏡、鏡頭與動效 | [`docs/02-storyboard-camera-motion.md`](docs/02-storyboard-camera-motion.md) |
+| 決定 3D／影片／DOM 與工程架構 | [`docs/03-architecture-and-assets.md`](docs/03-architecture-and-assets.md) |
+| 設效能紅線 | [`docs/04-performance-budget.md`](docs/04-performance-budget.md) |
+| 驗收與部署 | [`docs/05-production-qa.md`](docs/05-production-qa.md) |
+| 開始一個 15–20 秒原型 | [`docs/templates/VERTICAL-SLICE-SPEC.md`](docs/templates/VERTICAL-SLICE-SPEC.md) |
+| 查看現有 GitHub 整理結果 | [`docs/audits/GITHUB-REPOSITORY-AUDIT-2026-09-16.md`](docs/audits/GITHUB-REPOSITORY-AUDIT-2026-09-16.md) |
+| 交給 Codex 執行 | [`docs/CODEX-EXECUTION-SPEC.md`](docs/CODEX-EXECUTION-SPEC.md) |
 
-## three.js / R3F 工具鏈（pmndrs 生態）
+相容舊用法的「調用 NOX」入口仍在 [`prompts/NOX.md`](prompts/NOX.md)，但它現在只負責把 AI 導向需要的模組，不再把全部知識一次塞進 context。
 
-- [pmndrs/drei](https://github.com/pmndrs/drei) — R3F 必備 helper 集（相機控制、環境光、文字、載入器）
-- [pmndrs/react-three-fiber](https://github.com/pmndrs/react-three-fiber) — React 的 three.js 渲染器（AXIOM 用過）
-- [pmndrs/postprocessing](https://github.com/pmndrs/postprocessing) — Bloom、DOF 等後製效果，電影感來源
-- [donmccurdy/glTF-Transform](https://github.com/donmccurdy/glTF-Transform) — GLB 壓縮優化（Draco/Meshopt），iPad 載入速度關鍵
-- [gltf.report](https://gltf.report) — 瀏覽器直接檢查/壓縮 GLB，iPad 可用
+## v2 的製作順序
 
-## 靈感與範例
+```text
+Art Direction
+  → Reference Deconstruction
+  → Storyboard
+  → Camera Language
+  → Asset Strategy
+  → Scroll Timeline
+  → 3D / Video / DOM 分工
+  → Performance Budget
+  → Production QA
+  → 技術實作
+```
 
-- [brunosimon/folio-2019](https://github.com/brunosimon/folio-2019) — 完整可拆解的 Awwwards 級專案
-- [three.js examples](https://threejs.org/examples/) — 官方互動範例 + 原始碼
-- [Spline 社群場景](https://spline.design/community) — 可 remix，商用前確認各場景授權
+技術不再決定設計。React、R3F、GSAP、Lenis、Spline、Shader 都只是已定義畫面之後的執行工具。
 
-## 使用備忘
+## 倉庫定位
 
-1. **格式優先序**：GLB（含骨架動畫）> GLTF > FBX/OBJ（需轉檔）。`.splinecode` 只能在 Spline runtime 用，無法拆解。
-2. **iPad 效能紅線**：單一模型壓縮後 < 5MB，貼圖 ≤ 2048px，上 Draco 壓縮。
-3. **行為層交給 Claude**：視線追蹤、眨眼、idle 動畫混合 — 拿到 GLB 即可寫。
-4. **商用案授權三查**：CC0 直接用；CC-BY 要標註；21st.dev 元件逐個看授權頁。
+- `docs/`：v2 現行規範、Audit、案例與模板。
+- `prompts/`：讓 AI 依任務載入正確 v2 模組的入口。
 
-## Repo 結構
+舊版大全、通用粒子 Hero、內嵌 Base64 模型、無授權證據的測試模型、Spline 範例與舊站拷貝已從現行分支移除。它們會增加選型噪音，卻不能直接提高電影級網站的構圖、鏡頭、敘事、效能或交付品質。
 
-- `prompts/` — 可重用的 AI 整合提示詞（Lovable / Cursor 用）
-  - `spline-hero-integration-prompt.md` — Spline 機器人 hero 區塊，已修正 Tailwind keyframes / loader / 重複 Spotlight 等坑
-- `components/` — 可直接用的元件代碼
-  - `interactive-3d-hero.jsx` — three.js 金色粒子 torus knot，游標追蹤 + 自訂 shader，零外部資產依賴
-- `models/` — GLB / GLTF 模型檔，命名規則見資料夾內說明
+## 不可妥協原則
 
-## AI 生成 3D 工作流（iPad 可行版）
+1. 未完成鏡頭表、Art Bible 與資產盤點，不開始整站開發。
+2. 第一個交付物永遠是 15–20 秒 vertical slice，不是六章完整網站。
+3. 只有需要空間、視角、互動或即時光影時才用 WebGL；其餘優先使用影像、影片或 DOM。
+4. GSAP + ScrollTrigger 是主時間軸，Lenis 只負責輸入，R3F／Three.js 只負責渲染；不要建立多套互相競爭的動畫時鐘。
+5. 手機版是構圖與資產策略的一部分，不是桌機版降畫質後的殘缺版本。
+6. 沒有來源、授權與版本紀錄的素材，不得進入商業成品。
+7. 正式部署必須能追溯到同一個 commit，並完成固定座標截圖與真機驗收。
 
-文字 → 3D 模型 → 網頁互動，全程瀏覽器操作：
+## 現行內容門檻
 
-1. **生成**（雲端文字生 3D，輸出 GLB）
-   - [Meshy](https://www.meshy.ai) — 文字/圖片生 3D，品質穩定
-   - [Tripo3D](https://www.tripo3d.ai) — 速度快，適合快速迭代
-   - [Luma Genie](https://lumalabs.ai/genie) — 免費額度可先試
-2. **檢查/壓縮** — [gltf.report](https://gltf.report) 瀏覽器直接開，看面數、貼圖大小，套 Draco 壓縮
-3. **入庫** — 存到本 repo `models/`，命名 `來源_名稱_授權.glb`
-4. **行為層** — 丟給 Claude 寫 three.js 載入 + 互動（視線追蹤、動畫混合等）
+內容只有在能直接回答下列至少一項時才進入核心：如何拆頂級參考、如何寫分鏡與鏡頭、如何選 3D／影片／DOM、如何守住手機效能、如何完成 production QA。失敗原型只保留萃取後的結論，不保留會被誤用的成品拷貝。
 
-備註：NVIDIA build.nvidia.com 的 3D Object Generation Blueprint（TRELLIS）品質好但需本地 RTX 4080+ 顯卡，iPad 工作流不適用；其雲端 LLM API 端點留作 AI 自動化案備選。
+> 授權提醒：此 repo 尚未提供整體 LICENSE；任何未來加入的第三方模型、字體、場景、程式、圖片、影片與音訊，都必須先完成 [`docs/audits/ASSET-LICENSE-REGISTER.md`](docs/audits/ASSET-LICENSE-REGISTER.md) 才能商用。
