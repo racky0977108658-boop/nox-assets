@@ -9,6 +9,7 @@ NOX 的 3D／動態網站製作知識庫。目標不是堆疊特效，而是製�
 | 你現在要做什麼 | 先讀 |
 |---|---|
 | 了解完整方法 | [`docs/NOX-CINEMATIC-WEB-SYSTEM-v2.md`](docs/NOX-CINEMATIC-WEB-SYSTEM-v2.md) |
+| 查設計參考與素材來源 | [`docs/06-design-reference-and-asset-discovery.md`](docs/06-design-reference-and-asset-discovery.md) |
 | 拆參考、定美術 | [`docs/01-art-direction-and-reference.md`](docs/01-art-direction-and-reference.md) |
 | 寫分鏡、鏡頭與動效 | [`docs/02-storyboard-camera-motion.md`](docs/02-storyboard-camera-motion.md) |
 | 決定 3D／影片／DOM 與工程架構 | [`docs/03-architecture-and-assets.md`](docs/03-architecture-and-assets.md) |
