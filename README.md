@@ -60,3 +60,9 @@ Art Direction
 內容只有在能直接回答下列至少一項時才進入核心：如何拆頂級參考、如何寫分鏡與鏡頭、如何選 3D／影片／DOM、如何守住手機效能、如何完成 production QA。失敗原型只保留萃取後的結論，不保留會被誤用的成品拷貝。
 
 > 授權提醒：此 repo 尚未提供整體 LICENSE；任何未來加入的第三方模型、字體、場景、程式、圖片、影片與音訊，都必須先完成 [`docs/audits/ASSET-LICENSE-REGISTER.md`](docs/audits/ASSET-LICENSE-REGISTER.md) 才能商用。
+
+## Blender／3D 視覺品質固定準則
+
+涉及 Blender、3D 建築／室內質感、參考圖對照或視覺修正時，按需必讀 [Blender Skills 與 3D 網頁視覺驗收](docs/07-blender-skills-visual-acceptance.md)。
+
+真正讀取並執行相關 Skill；實際檢視最終網頁截圖，依最大差距迭代。Blender 預覽與工程檢查不能代替網頁視覺驗收；手機外觀與真機效能分開驗證。未取得證據標示未驗證／受阻，不宣稱品質達標。保留已驗證結構，先完成單一關鍵場景。
