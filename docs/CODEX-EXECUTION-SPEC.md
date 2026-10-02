@@ -8,7 +8,7 @@
 
 1. `README.md`
 2. `docs/NOX-CINEMATIC-WEB-SYSTEM-v2.md`
-3. 依任務讀 `docs/01` 至 `docs/05` 中最多三份
+3. 依 README 任務索引，選讀 `docs/01` 至 `docs/08` 中最多三份；只有被選中模組明確要求時再讀其 Skill／參考
 4. 新專案填 `docs/templates/VERTICAL-SLICE-SPEC.md`
 5. 使用既有素材前讀 `docs/audits/ASSET-LICENSE-REGISTER.md`
 
@@ -40,4 +40,9 @@
 
 涉及 Blender、3D 建築／室內質感、參考圖對照或視覺修正時，按需必讀 [Blender Skills 與 3D 網頁視覺驗收](07-blender-skills-visual-acceptance.md)。
 
-真正讀取並執行相關 Skill；實際檢視最終網頁截圖，依最大差距迭代。Blender 預覽與工程檢查不能代替網頁視覺驗收；手機外觀與真機效能分開驗證。未取得證據標示未驗證／受阻，不宣稱品質達標。保留已驗證結構，先完成單一關鍵場景。
+完整要求以 [07 視覺驗收](07-blender-skills-visual-acceptance.md) 為準，不在各入口複製全文。
+
+
+## 流體與材質動態
+
+按需讀 [08 流體技術與 Skill](08-threejs-fluid-art.md)。主捲動時間軸負責敘事與鏡頭；物理模擬使用受同一渲染迴圈調度的固定步長，不把捲動進度當成可倒轉的物理時間。

@@ -13,10 +13,12 @@ NOX 的 3D／動態網站製作知識庫。目標不是堆疊特效，而是製�
 | 拆參考、定美術 | [`docs/01-art-direction-and-reference.md`](docs/01-art-direction-and-reference.md) |
 | 寫分鏡、鏡頭與動效 | [`docs/02-storyboard-camera-motion.md`](docs/02-storyboard-camera-motion.md) |
 | 決定 3D／影片／DOM 與工程架構 | [`docs/03-architecture-and-assets.md`](docs/03-architecture-and-assets.md) |
+| Blender／建築與室內視覺驗收 | [07 視覺驗收](docs/07-blender-skills-visual-acceptance.md) |
+| 加入流體、布料、軟體與煙霧 | [08 流體技術與 Skill](docs/08-threejs-fluid-art.md) |
 | 設效能紅線 | [`docs/04-performance-budget.md`](docs/04-performance-budget.md) |
 | 驗收與部署 | [`docs/05-production-qa.md`](docs/05-production-qa.md) |
 | 開始一個 15–20 秒原型 | [`docs/templates/VERTICAL-SLICE-SPEC.md`](docs/templates/VERTICAL-SLICE-SPEC.md) |
-| 查看現有 GitHub 整理結果 | [`docs/audits/GITHUB-REPOSITORY-AUDIT-2026-09-16.md`](docs/audits/GITHUB-REPOSITORY-AUDIT-2026-09-16.md) |
+| 查看目前倉庫分類與整理結果 | [2026-10-02 檢查報告](docs/audits/GITHUB-REPOSITORY-AUDIT-2026-10-02.md) |
 | 交給 Codex 執行 | [`docs/CODEX-EXECUTION-SPEC.md`](docs/CODEX-EXECUTION-SPEC.md) |
 
 相容舊用法的「調用 NOX」入口仍在 [`prompts/NOX.md`](prompts/NOX.md)，但它現在只負責把 AI 導向需要的模組，不再把全部知識一次塞進 context。
@@ -42,6 +44,9 @@ Art Direction
 
 - `docs/`：v2 現行規範、Audit、案例與模板。
 - `prompts/`：讓 AI 依任務載入正確 v2 模組的入口。
+- `skills/`：可重用的技能套件；各自包含 `SKILL.md` 與按需讀取的參考。
+
+`nox-assets` 是共用方法與技能入口；獨立產品、實驗展示與案例仍留在各自倉庫。分類與證據見 [最新檢查報告](docs/audits/GITHUB-REPOSITORY-AUDIT-2026-10-02.md)。
 
 舊版大全、通用粒子 Hero、內嵌 Base64 模型、無授權證據的測試模型、Spline 範例與舊站拷貝已從現行分支移除。它們會增加選型噪音，卻不能直接提高電影級網站的構圖、鏡頭、敘事、效能或交付品質。
 
@@ -65,4 +70,5 @@ Art Direction
 
 涉及 Blender、3D 建築／室內質感、參考圖對照或視覺修正時，按需必讀 [Blender Skills 與 3D 網頁視覺驗收](docs/07-blender-skills-visual-acceptance.md)。
 
-真正讀取並執行相關 Skill；實際檢視最終網頁截圖，依最大差距迭代。Blender 預覽與工程檢查不能代替網頁視覺驗收；手機外觀與真機效能分開驗證。未取得證據標示未驗證／受阻，不宣稱品質達標。保留已驗證結構，先完成單一關鍵場景。
+完整規則統一維護在 07 模組；入口只保留連結，避免多份規則分別更新。
+
