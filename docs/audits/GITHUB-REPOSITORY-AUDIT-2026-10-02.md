@@ -6,7 +6,7 @@
 
 **nox-assets 本身不亂；跨倉庫的用途、成熟度與入口說明不一致，較容易誤用舊成果。** 檢查前 nox-assets 共 17 個檔案、46,240 bytes，根目錄只有 AGENTS.md、README.md、docs/、prompts/。沒有整份內容 SHA 相同的重複檔案。八個倉庫的目前檔案樹都未追蹤 node_modules/ 或 dist/。
 
-## 倉庫地圖
+## 檢查前倉庫地圖
 
 | 倉庫 | 依本次證據可辨識的定位 | 結構判斷／下一步 |
 |---|---|---|
@@ -31,8 +31,8 @@
 
 ## 仍建議改善
 
-- 優先補 leorich、my-site 的 README；my-site 先確認每個用途不明檔案再決定命名與歸類。
-- 其餘展示 repo 增加「用途、維護狀態、啟動方式、部署位置、能否作新案模板」五項說明；不要由 repo 名稱推定它已通過驗收。
+- leorich、my-site 的 README 已補齊；my-site 的 Okya、nox 等檔案仍須先確認用途，再決定命名與歸類。
+- 所有倉庫已有用途、維護狀態與模板適用性說明。仍需按實際專案補足已驗證的啟動方式與部署位置；不由名稱推定驗收結果。
 - nox-earth-demo 與 nox-ever-artico 若持續開發，找回原始 source 與建置流程；單一大 HTML 不適合作為新案的預設起點。若僅保留展示，再由用途決定是否標成歷史展示。
 - 不為了視覺整齊，把獨立產品搬進共用知識庫。
 
@@ -53,6 +53,19 @@
 
 ## 變更邊界與驗證
 
-只變更 nox-assets 的技能與導覽／檢查文件；其他七個倉庫僅讀取。沒有改網站程式、部署設定或 Codex config.toml。文件變更使用專用分支提交；實際提交與整合狀態以 GitHub 紀錄為準。
+nox-assets 更新技能與導覽／檢查文件；其他七個倉庫只更新或新增 README，補齊用途、維護狀態、主要檔案與新案適用性。沒有改網站程式、部署設定或 Codex config.toml。nox-assets 的技能變更經專用分支與 PR 整合；各倉庫的 README 小幅文件變更直接提交。已讀回線上檔案雜湊，並比對其餘原始檔未被修改。
 
 驗證項目：技能副本與已建立版本比對、相對文件連結與介面圖示路徑檢查、文件 diff／空白檢查。這些檢查不代表流體效果已在任何網站運行。
+
+## 完成紀錄
+
+| 倉庫 | 已完成內容 | 提交 |
+|---|---|---|
+| nox-assets | 流體技能、索引與檢查報告 | [3c05e3d](https://github.com/racky0977108658-boop/nox-assets/commit/3c05e3d05ec5f80c77fb9d72385c3f017e3cf7f0) |
+| everflow | README 用途與維護標示 | [a96a779](https://github.com/racky0977108658-boop/everflow/commit/a96a7791d0ead26a8f8905a3b987b7241005c2f4) |
+| leorich | README 用途與維護標示 | [8822564](https://github.com/racky0977108658-boop/leorich/commit/882256447fafec3efd4dc607c69355ae725e6b34) |
+| my-site | README 用途與維護標示 | [98a78d2](https://github.com/racky0977108658-boop/my-site/commit/98a78d21fe4c6278ce1278522941bb71777b6ea5) |
+| nox-collection-001 | README 用途與維護標示 | [561e819](https://github.com/racky0977108658-boop/nox-collection-001/commit/561e819199f51e81c737df20acd36b8a1f479f83) |
+| nox-earth-demo | README 用途與維護標示 | [6ac687d](https://github.com/racky0977108658-boop/nox-earth-demo/commit/6ac687d9233e735d54f44ed63dc6e6617aeaf235) |
+| nox-ever-artico | README 用途與維護標示 | [2750d51](https://github.com/racky0977108658-boop/nox-ever-artico/commit/2750d51709af0de67c82b0370c3dc3e30cf741ad) |
+| spline-hero | README 用途與維護標示 | [96dbecb](https://github.com/racky0977108658-boop/spline-hero/commit/96dbecb17cdc9180f1cc5304da01903651ed2a44) |
